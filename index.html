@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#050611" />
+  <meta name="description" content="ORBIT — an interactive 3D universe. Explore a miniature planetary system." />
+  <title>ORBIT — Explore the Universe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/style.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="noise"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="ORBIT home"><span class="brand-mark">✳</span> ORBIT<span class="brand-dot">.</span></a>
+    <div class="topbar-center"><span class="live-dot"></span> INTERACTIVE UNIVERSE <span class="topbar-divider">/</span> SOL SYSTEM 01</div>
+    <button id="cinematicBtn" class="top-button" type="button"><span>⛶</span> CINEMATIC</button>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p class="eyebrow">A SMALL WINDOW INTO THE INFINITE</p>
+      <h1>Explore the <em>unknown.</em></h1>
+      <p class="intro-copy">Travel through a living miniature universe. Select a world, trace its orbit, and discover what makes it unique.</p>
+    </section>
+
+    <section class="universe-shell" aria-label="Interactive 3D solar system">
+      <div id="scene" class="scene"></div>
+      <div class="scene-vignette"></div>
+      <div class="scene-label scene-label-left"><span class="label-line"></span> DEEP SPACE // 001</div>
+      <div class="scene-label scene-label-right">LIVE SIMULATION <span class="live-dot"></span></div>
+      <div class="scene-hint"><span class="mouse-icon">◎</span> DRAG TO ROTATE <span>·</span> SCROLL TO ZOOM</div>
+
+      <aside class="planet-card" id="planetCard">
+        <button class="close-card" id="closeCard" aria-label="Close planet details">×</button>
+        <p class="eyebrow" id="planetType">TERRESTRIAL PLANET</p>
+        <h2 id="planetName">Earth</h2>
+        <p id="planetDescription">Our pale blue home, the only known world to host life.</p>
+        <div class="planet-stats">
+          <div><span>ORBIT</span><strong id="planetOrbit">1.00 AU</strong></div>
+          <div><span>DAY LENGTH</span><strong id="planetDay">24 hours</strong></div>
+          <div><span>MOONS</span><strong id="planetMoons">1</strong></div>
+        </div>
+        <button id="focusPlanet" class="focus-button">FOCUS THIS WORLD <span>↗</span></button>
+      </aside>
+
+      <div class="scene-controls">
+        <button id="resetView" class="icon-button" title="Reset camera">⌂</button>
+        <button id="zoomOut" class="icon-button" title="Zoom out">−</button>
+        <button id="zoomIn" class="icon-button" title="Zoom in">+</button>
+      </div>
+    </section>
+
+    <section class="control-deck">
+      <div class="deck-left">
+        <div class="deck-heading"><span class="deck-kicker">MISSION CONTROL</span><span class="status-pill"><i></i> SYSTEM ONLINE</span></div>
+        <div class="transport">
+          <button id="playPause" class="play-button" aria-label="Pause simulation">Ⅱ</button>
+          <div class="speed-control">
+            <div class="speed-label"><span>ORBITAL SPEED</span><strong id="speedValue">1.0×</strong></div>
+            <input id="speedSlider" type="range" min="0" max="4" step="0.1" value="1" />
+            <div class="range-labels"><span>STILL</span><span>HYPER</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="deck-right">
+        <label class="search-wrap"><span>⌕</span><input id="planetSearch" type="search" placeholder="Find a planet..." autocomplete="off" /><kbd>↵</kbd></label>
+        <div class="planet-picker" id="planetPicker" aria-label="Select a planet"></div>
+      </div>
+    </section>
+
+    <section class="bottom-info">
+      <div><span class="bottom-number">01</span><p><strong>Eight worlds.</strong> One star. Countless paths.</p></div>
+      <div><span class="bottom-number">02</span><p><strong>Your universe.</strong> Change the view and set your own pace.</p></div>
+      <div class="footer-note">BUILT FOR THE CURIOUS <span>✳</span> 2026 ORBIT PROJECT</div>
+    </section>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
